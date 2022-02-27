@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown = require("generateMarkdown");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 const promptUser = () => {
   return inquirer
@@ -129,19 +129,23 @@ const promptUser = () => {
         },
       },
     ])
-    .then(writeFile("README.md", generateMarkdown(data)));
+    .then((data) => {
+      writeFile("README.md", generateMarkdown(data));
+    });
 };
-promptUser();
 
 const writeFile = (fileName, data) => {
   return new Promise((resolve, reject) => {
-    FileSystem.writeFile("./dist" + fileName, data, err);
-    if (err) {
-      reject(err);
-    }
-    resolve({
-      ok: true,
-      message: "README file created! Check it out in the dist folder!",
+    fs.writeFile("dist/" + fileName, data, (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve({
+        ok: true,
+        message: "README file created! Check it out in the dist folder!",
+      });
     });
   });
 };
+promptUser();
