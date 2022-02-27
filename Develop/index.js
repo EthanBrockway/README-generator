@@ -83,6 +83,25 @@ const promptUser = () => {
         }
       },
     },
+    {
+      type: "input",
+      name: "test",
+      message: "Write instructions on how to run tests for your project.",
+      validate: (usage) => {
+        if (usage) {
+          return true;
+        } else {
+          console.log("Please enter instructions for testing.");
+          return false;
+        }
+      },
+    },
+    {
+      type: "checkbox",
+      name: "license",
+      message: "Please select which licenses are used in your project.",
+      choices: ["MIT", "GNU", "Eclipse", "Mozilla", "Apache", "Oracle"],
+    },
   ]);
 };
 promptUser();
