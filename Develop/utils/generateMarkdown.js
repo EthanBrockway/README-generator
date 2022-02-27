@@ -52,14 +52,11 @@ function generateMarkdown(data) {
   # Table of contents
 
   [Description](#Description)
-  [Installation](Installation)
+  [Installation](#Installation)
   [Usage](#Usage)
   [Contributors](#Contributors)
   [Testing](#Testing)
 
-  ## License
-
-  ${renderLicenseLink(data.license)}
 
   ## Description
 
@@ -80,18 +77,31 @@ function generateMarkdown(data) {
   ## Testing
 
    ${data.test}
+
+   ## License
+
+  ${renderLicenseLink(data.license)}
+
+   ## Questions 
+
+   If you have any other questions you can reach me at my email: ${data.email} 
+   Or checkout my github profile at: [Github](https://github.com/${
+     data.githubUser
+   })
 `;
 }
 
 function noContribution(data) {
   return `
+ ${renderLicenseBadge(data.license)}
   # ${data.title}
 
   # Table of contents
 
   [Description](#Description)
-  [Installation](Installation)
+  [Installation](#Installation)
   [Usage](#Usage)
+  [Contributors](#Contributors)
   [Testing](#Testing)
 
   ## Description
@@ -107,8 +117,19 @@ function noContribution(data) {
   ${data.usage}
 
   ## Testing
-  
+
    ${data.test}
+   
+   ## License
+
+  ${renderLicenseLink(data.license)}
+
+   ## Questions 
+
+   If you have any other questions you can reach me at my email: ${data.email} 
+   Or checkout my github profile at: [Github](https://github.com/${
+     data.githubUser
+   })
 `;
 }
 
