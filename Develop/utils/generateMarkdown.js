@@ -14,12 +14,52 @@ function renderLicenseSection(license) {}
 function generateMarkdown(data) {
   return `
   # ${data.title}
-  # ${data.description}
-  # ${data.installation}
-  # ${data.usage}
-  # ${data.contribution}
-  # ${data.test}
+
+  ## Description
+
+  ${data.description}
+  
+  ## Installation
+  
+   ${data.installation}
+
+  ## Usage
+
+  ${data.usage}
+
+  ## Contributors
+
+   ${data.contribution}
+
+  ## Testing
+
+   ${data.test}
 `;
 }
 
-module.exports = generateMarkdown;
+function noContribution(data) {
+  return `
+  # ${data.title}
+
+  ## Description
+
+  ${data.description}
+  
+  ## Installation
+  
+   ${data.installation}
+
+  ## Usage
+
+  ${data.usage}
+
+  ## Testing
+  
+   ${data.test}
+`;
+}
+
+module.exports = {
+  generateMarkdown,
+  noContribution,
+};

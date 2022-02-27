@@ -1,6 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown");
+const {
+  generateMarkdown,
+  noContribution,
+} = require("./utils/generateMarkdown");
 
 const promptUser = () => {
   return inquirer
@@ -85,6 +88,7 @@ const promptUser = () => {
             return false;
           }
         },
+        default: "No contributors",
       },
       {
         type: "input",
@@ -130,7 +134,9 @@ const promptUser = () => {
       },
     ])
     .then((data) => {
-      writeFile("README.md", generateMarkdown(data));
+      if (data.confirmContribution) {
+        writeFile("README.md", generateMarkdown(data));
+      } else writeFile("README.md", noContribution(data));
     });
 };
 
