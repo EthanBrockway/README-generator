@@ -5,7 +5,7 @@ It creates a README.md folder based off of answers the user gives to the questio
 
 
 ## Video Walkthrough
-
+[Video](https://watch.screencastify.com/v/atxBTXV381rwvRaxfVQZ)
 # Table of contents
  * [Description](#description)
  * [Installation](#installation)
